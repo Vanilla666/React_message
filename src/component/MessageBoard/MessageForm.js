@@ -25,7 +25,7 @@ class MessageForm extends Component{
 
     handleSumit = () => { //箭頭函數這樣就不用this綁定
         let inputMessage={name:this.state.name,content:this.state.content};//輸出現在的name content
-        this.props.sss(inputMessage); // handleItem外部處理
+        this.props.sss(inputMessage); // sss外部處理
     }
 
     render(){//生命週期 負責炫覽畫面的

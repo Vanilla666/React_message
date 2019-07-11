@@ -25,7 +25,7 @@ class MessageBoard extends Component{
             <div>                   
                   
                   <MessageList item={this.state.item} />
-                  <MessageForm sss={handleItem} /> {/* 左邊是props */}
+                  <MessageForm sss={handleItem} /> {/* 左邊是props sss 從 Board過來的 */}
             </div>
         );
     }
