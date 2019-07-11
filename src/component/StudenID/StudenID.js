@@ -1,4 +1,4 @@
-import Welcome from './Welcome';
+import Welcome from '../Welcome/Welcome';
 import React,{Component} from 'react';
 // C:\Users\user\Desktop\React\basics\src\component\StudentID.css
 class StudenID extends Component { //利用其他組件去創建一個 新的組件
