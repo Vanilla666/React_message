@@ -39,9 +39,9 @@ class Todolist extends React.Component {
            /> {/* 輸入視窗用來找貨物 */}
            <button onClick={addItem}>addItem</button>
            <ul>
-        {item.map((content) =>
-          <li key={content.toString()} value={content} > {content} </li >
-        )}
+        {item.map((content,index) =>
+          <li  id={index} key={content.toString()} value={content} > {content} </li >
+        )} {/* 增加ID 可以用來辨別是哪一個 用來刪除用 */}
       </ul>
         </div>
       );
