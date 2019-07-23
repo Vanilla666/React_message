@@ -9,16 +9,16 @@ class Todolist extends React.Component {
         this.state = {
           content:'',
           item:[],
-          searhitem:['FGG','DFF'],//備份資料
+          searhitem:[],//備份資料
         };//內部自定義的變數
        
       }
       
-      componentDidMount(){  //DOM有關的初始化操作 this.setState => render => DidMount
-        this.setState({ 
-          searhitem:this.state.item //把值備份
-        })
-      }
+      // componentDidMount(){  //DOM有關的初始化操作 
+      //   // this.setState({ 
+      //   //   searhitem:this.state.item //把值備份
+      //   // })
+      // }
 
       handleContent = (e) => {
         this.setState({
@@ -32,6 +32,7 @@ class Todolist extends React.Component {
         console.log(`目前item : ${currentMessage}`); 
         this.setState({ //改變內部變數不然會少一個炫覽
           item:currentMessage,
+          searhitem:currentMessage
         });
       }
 
