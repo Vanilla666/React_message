@@ -1,6 +1,7 @@
 
 import React from 'react';
 import TodoItem from './TodoItem';
+import FilteredList from './FilteredList';
 
 class Todolist extends React.Component {
     constructor(props) {
@@ -8,10 +9,17 @@ class Todolist extends React.Component {
         this.state = {
           content:'',
           item:[],
+          searhitem:['FGG','DFF'],//備份資料
         };//內部自定義的變數
        
       }
       
+      componentDidMount(){  //DOM有關的初始化操作 this.setState => render => DidMount
+        this.setState({ 
+          searhitem:this.state.item //把值備份
+        })
+      }
+
       handleContent = (e) => {
         this.setState({
           content: e.target.value
@@ -33,16 +41,45 @@ class Todolist extends React.Component {
         console.log('刪除陣列裡當前索引值的資料',this.state.item);
         this.setState({
           item:this.state.item,//改變陣列
+          searhitem:this.state.item
         })
       }
 
+      searhItem = (x) => { //拿到子組件的收尋文字
+        // console.log('子組件的收尋文字: ',x);
+        let searhText = this.state.item.filter ((item)=>{
+          return item.toLowerCase().indexOf(x.toLowerCase()) !== -1
+        }); //代表有找到
+        console.log('searhText', searhText);
+
+        if(searhText.length !== 0 && x !== ''){ //代表收尋陣列有值
+
+          console.log("代表收尋陣列有值",searhText);
+          this.setState({
+            item:searhText
+          })
+      
+        }
+
+        else{
+
+          console.log("沒有值",this.state.searhitem);//空陣列或空輸入
+          this.setState({
+            item:this.state.searhitem//就把備份資料加入
+          })
+
+        }
+       
+      }
 
     render() {
-        const {handleContent,addItem,deleteItem} = this,
+        const {handleContent,addItem,deleteItem,searhItem} = this,
               {content,item} = this.state;
               // console.log(`目前item : ${this.state.item}`); 
+              
       return (
         <div>
+          <FilteredList onsearh={searhItem} /> 
 
           <input type="text" 
           placeholder="addItem..."
@@ -50,7 +87,7 @@ class Todolist extends React.Component {
           onChange={handleContent}
            /> {/* 輸入視窗用來找貨物 */}
            <button onClick={addItem}>addItem</button>
-
+          
         <ul>
            <TodoItem item={item}  onItemClick={deleteItem}/> {/* 拆成組件 */}
         </ul>
