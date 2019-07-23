@@ -1,5 +1,6 @@
 
 import React from 'react';
+import TodoItem from './TodoItem';
 
 class Todolist extends React.Component {
     constructor(props) {
@@ -26,23 +27,34 @@ class Todolist extends React.Component {
         });
       }
 
+      deleteItem = (k) =>{ //傳進當前按鈕按下後的索引值
+        // console.log('k',this.state.item[k]); //拿到陣列的值
+        this.state.item.splice(this.state.item[k], 1);// 刪除1筆 資料
+        console.log('刪除陣列裡當前索引值的資料',this.state.item);
+        this.setState({
+          item:this.state.item,//改變陣列
+        })
+      }
+
+
     render() {
-        const {handleContent,addItem} = this,
+        const {handleContent,addItem,deleteItem} = this,
               {content,item} = this.state;
-              console.log(`目前item : ${this.state.item}`); 
+              // console.log(`目前item : ${this.state.item}`); 
       return (
         <div>
+
           <input type="text" 
           placeholder="addItem..."
           value={content}  
           onChange={handleContent}
            /> {/* 輸入視窗用來找貨物 */}
            <button onClick={addItem}>addItem</button>
-           <ul>
-        {item.map((content,index) =>
-          <li  id={index} key={content.toString()} value={content} > {content} </li >
-        )} {/* 增加ID 可以用來辨別是哪一個 用來刪除用 */}
-      </ul>
+
+        <ul>
+           <TodoItem item={item}  onItemClick={deleteItem}/> {/* 拆成組件 */}
+        </ul>
+
         </div>
       );
     }
