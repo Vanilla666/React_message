@@ -37,8 +37,9 @@ class Todolist extends React.Component {
       }
 
       deleteItem = (k) =>{ //傳進當前按鈕按下後的索引值
-        // console.log('k',this.state.item[k]); //拿到陣列的值
-        this.state.item.splice(this.state.item[k], 1);// 刪除1筆 資料
+        console.log('k',this.state.item[k]); //拿到陣列的值
+        // delete this.state.item[k];
+        this.state.item.splice(k, 1);// 刪除1筆 資料 splice(當前索引,刪幾筆)
         console.log('刪除陣列裡當前索引值的資料',this.state.item);
         this.setState({
           item:this.state.item,//改變陣列
