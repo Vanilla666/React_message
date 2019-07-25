@@ -72,7 +72,7 @@ class Todolist extends React.Component {
           }
 
           if(x === ''){ //還原備份
-            console.log(" '' ",this.state.searhitem);//空輸入
+            console.log(" '' ",this.state.searhitem);//空字串
             this.setState({
               item:this.state.searhitem//就把備份資料加入
             })
