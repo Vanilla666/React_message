@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom';
 // import FilterableProductTable from  './component/FilterableProductTable/FilterableProductTable'; //清單
 
 import Todolist from './component/Todolist/Todolist'; 
+import Api from './component/Api/Api'; 
 
 // import Home from './component/Home/Home'; 
 import * as serviceWorker from './serviceWorker';
@@ -23,7 +24,7 @@ import * as serviceWorker from './serviceWorker';
 //     {category: 'Electronics', price: '$199.99', stocked: true, name: 'Nexus 7'}
 //   ];
 
-ReactDOM.render( <Todolist/>, document.getElementById('root'));
+ReactDOM.render( <Api/>, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
